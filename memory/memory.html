@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+<style>
+.card{
+    width: 200px;
+    height: 250px;
+    padding: 10px;
+}
+</style>
+<title></title>
+</head>
+
+
+
+<body>
+
+<div id="board" class="text-center">
+
+<div id="row1"></div>
+<div id="row2"></div>
+<div id="row3"></div>
+
+</div>
+
+<script>
+function gameStart(){
+    function shuffle(array) {
+        let counter = array.length;
+
+        // While there are elements in the array
+        while (counter > 0) {
+            // Pick a random index
+            let index = Math.floor(Math.random() * counter);
+
+            // Decrease counter by 1
+            counter--;
+
+            // And swap the last element with it
+            let temp = array[counter];
+            array[counter] = array[index];
+            array[index] = temp;
+        }
+        return array;
+    }
+
+    var vals = [1,1,2,2,3,3,4,4,5,5,6,6];
+    var shuffled = shuffle(vals);
+
+
+    var counter =1;
+    var valscounter=0;
+
+    for (var j=0; j<3;j++){
+        var x = 'row' + counter;
+        for (var i=0; i<4;i++){
+            var img = document.createElement("img");
+            img.className="card";
+            var att = document.createAttribute("src");
+            var id = document.createAttribute("id");
+            id.value=shuffled[valscounter];
+            att.value= "texture.jpg";
+            img.setAttributeNode(att);
+            img.setAttributeNode(id);
+            document.getElementById(x).appendChild(img);
+            valscounter++;
+        }
+        counter++;
+    }
+}
+
+gameStart();
+
+var match=false;
+
+var show=true;
+
+var cardCheck =[];
+
+var count="";
+
+function doThing(){
+    //currCard = this.id;
+    if (count.length==1){
+        var currId = this.id;
+        this.src = currId + ".jpg";
+        cardCheck.push(this.id);
+        count="12";
+    }
+
+        if (count.length==0){
+            var currId = this.id;
+            this.src = currId + ".jpg";
+            cardCheck.push(this.id);
+            count = "1";
+
+        }
+
+
+        var card1 = cardCheck[0];
+        var card2 = cardCheck[1];
+
+            if (count.length==2){
+                alert("checking....");
+                console.log("c1:" + card1);
+                console.log("c2:" +card2)
+                if (card1!=card2){
+
+                    var myVar = setInterval(myTimer, 2000);
+                    function myTimer() {
+                        document.getElementById(card1).src= "texture.jpg";
+                        document.getElementById(card2).src= "texture.jpg";
+                    }
+                }
+                else{
+                    alert("match");
+                }
+                count ="";
+                cardCheck =[];
+            }
+
+}
+
+
+var cards = document.getElementsByClassName("card");
+
+for (var x=0; x<cards.length; x++){
+    cards[x].addEventListener("click", doThing);
+}
+
+</script>
+</body>
+</html>
