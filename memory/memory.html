@@ -13,10 +13,13 @@
 
 <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
 <style>
-body{
+
+#theGame{
     background-image: url(https://img-www.tf-cdn.com/show/2/rick-and-morty.jpeg?_v=20150921140052&fit=crop&crop=faces%20top&w=1200&h=630);
     background-repeat: no-repeat;
     background-size: cover;
+    padding-bottom: 110px;
+
 }
 .card{
     width: 200px;
@@ -41,6 +44,21 @@ body{
 #incorrect{
     font-size: 30px;
 }
+
+#myModal{
+    background-image: url(https://memegenerator.net/img/instances/67724716/i-like-what-you-got-good-job.jpg);
+    background-repeat: no-repeat;
+    background-size: 800px;
+    background-position: center;
+}
+#playAgain{
+    font-size: 40px;
+    text-align: center;
+    width: auto;
+    color: white;
+    background-color:#68a21a;
+    font-family: monospace;
+}
 </style>
 <title></title>
 </head>
@@ -48,6 +66,7 @@ body{
 
 
 <body>
+    <div id="theGame" class="container-fluid">
     <div id="header" class="text-center">
         <button class="button btn"id="newGame" onclick="newBoard();">Get Schwifty</button><span id="incorrect">Incorrect: 0</id>
     </div>
@@ -57,6 +76,13 @@ body{
 <div id="row2"></div>
 <div id="row3"></div>
 
+</div>
+
+<div class="modal fade bd-example-modal-sm" id="myModal">
+  <div class="modal-dialog modal-lg text-center">
+        <button onclick="newBoardWin();" class="button btn" id="playAgain">Play Again</button>
+  </div>
+</div>
 </div>
 
 <script src="memory.js">

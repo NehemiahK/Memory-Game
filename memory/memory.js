@@ -92,7 +92,7 @@ function gameStart(){
             }
         }
         if (correct.length==6){
-            alert("you win");
+            $('#myModal').modal('show');
         }
     }
     /*assigning the event listeners to the cards */
@@ -112,7 +112,14 @@ function newBoard(){
     document.getElementById("row3").innerHTML="";
     document.getElementById("row2").innerHTML="";
     document.getElementById('incorrect').innerHTML="Incorrect: " + 0;
+    gameStart();
+}
 
-
+function newBoardWin(){
+    $('#myModal').modal('hide');
+    document.getElementById("row1").innerHTML="";
+    document.getElementById("row3").innerHTML="";
+    document.getElementById("row2").innerHTML="";
+    document.getElementById('incorrect').innerHTML="Incorrect: " + 0;
     gameStart();
 }
