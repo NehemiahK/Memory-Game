@@ -28,21 +28,25 @@ function gameStart(){
     var vals;
     var lvl;
     var cardSize;
+    var winCondition;
 
     if (gameLevel=='easy'){
         vals = [1,1,2,2,3,3,4,4,5,5,6,6];
         lvl = [3,4];
         cardSize = "card";
+        winCondition = 6;
     }
     else if(gameLevel=='medium'){
         vals =[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9];
         lvl = [3,6];
         cardSize = "card2";
+        winCondition = 9;
     }
     else if(gameLevel=='hard'){
         vals =[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12];
         lvl = [4,6];
         cardSize = "card3";
+        winCondition = 12;
     }
 
     var shuffled = shuffle(vals);
@@ -117,7 +121,7 @@ function gameStart(){
                 }
             }
         }
-        if (correct.length==6){
+        if (correct.length==winCondition){
             $('#myModal').modal('show');
         }
     }
