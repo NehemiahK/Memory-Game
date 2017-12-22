@@ -1,3 +1,7 @@
+var vid = document.getElementById("music");
+vid.autoplay = true;
+vid.loop = true;
+
 function gameStart(){
 
     function shuffle(array) {
@@ -31,12 +35,16 @@ function gameStart(){
         var x = 'row' + counter;
         for (var i=0; i<4;i++){
             var img = document.createElement("img");
+            var div = document.createElement("div");
+
             img.className="card";
+            //div.className="col-md-3 col-xs-6 text-center";
 
             img.setAttribute("src","texture.jpg");
             img.setAttribute("id",valscounter);
             img.setAttribute("alt",shuffled[valscounter]);
 
+            //div.appendChild(img);
             document.getElementById(x).appendChild(img);
             valscounter++;
         }
@@ -58,8 +66,9 @@ function gameStart(){
             checkId.push(this.id);
 
             if (checkVal.length==1){
-                this.src = this.alt + ".jpg";
 
+                this.src = this.alt + ".jpg";
+                
             }
             else if (checkVal.length ==2){
                 this.src = this.alt + ".jpg";
