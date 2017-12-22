@@ -24,7 +24,14 @@
       <source src="randm.mp3" type="audio/mp3">
     </audio>
     <div id="header" class="text-center">
-        <button class="button btn"id="newGame" onclick="newBoard();">Get Schwifty</button><span id="incorrect">Incorrect: 0</id>
+        <button class="button btn"id="newGame" onclick="newBoard();">Get Schwifty</button>
+        <select id="selectLevel">
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+        <span id="incorrect">Incorrect: 0</span>
+
     </div>
 
     <div class="container boardset">
@@ -34,6 +41,7 @@
 <div class="rows" id="row1" ></div>
 <div class="rows" id="row2" ></div>
 <div class="rows" id="row3"></div>
+<div class="rows" id="row4"></div>
 
 </div>
 

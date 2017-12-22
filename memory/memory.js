@@ -23,28 +23,45 @@ function gameStart(){
         return array;
     }
 
-    var vals = [1,1,2,2,3,3,4,4,5,5,6,6];
+
+    var gameLevel = document.getElementById('selectLevel').value;
+    var vals;
+    var lvl;
+    var cardSize;
+
+    if (gameLevel=='easy'){
+        vals = [1,1,2,2,3,3,4,4,5,5,6,6];
+        lvl = [3,4];
+        cardSize = "card";
+    }
+    else if(gameLevel=='medium'){
+        vals =[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9];
+        lvl = [3,6];
+        cardSize = "card2";
+    }
+    else if(gameLevel=='hard'){
+        vals =[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12];
+        lvl = [4,6];
+        cardSize = "card3";
+    }
+
     var shuffled = shuffle(vals);
-
-
     var counter =1;
     var valscounter=0;
 
 
-    for (var j=0; j<3;j++){
+    for (var j=0; j<lvl[0];j++){
         var x = 'row' + counter;
-        for (var i=0; i<4;i++){
+        for (var i=0; i<lvl[1];i++){
             var img = document.createElement("img");
             var div = document.createElement("div");
 
-            img.className="card";
-            //div.className="col-md-3 col-xs-6 text-center";
+            img.className= cardSize;
 
             img.setAttribute("src","texture.jpg");
             img.setAttribute("id",valscounter);
             img.setAttribute("alt",shuffled[valscounter]);
 
-            //div.appendChild(img);
             document.getElementById(x).appendChild(img);
             valscounter++;
         }
@@ -68,7 +85,7 @@ function gameStart(){
             if (checkVal.length==1){
 
                 this.src = this.alt + ".jpg";
-                
+
             }
             else if (checkVal.length ==2){
                 this.src = this.alt + ".jpg";
@@ -106,7 +123,7 @@ function gameStart(){
     }
     /*assigning the event listeners to the cards */
 
-    var cards = document.getElementsByClassName("card");
+    var cards = document.getElementsByClassName(cardSize);
     for (var x=0; x<cards.length; x++){
         cards[x].addEventListener("click", checkCard);
     }
@@ -117,9 +134,12 @@ gameStart();
 
 
 function newBoard(){
+    gameLevel = document.getElementById('selectLevel').value;
+
     document.getElementById("row1").innerHTML="";
     document.getElementById("row3").innerHTML="";
     document.getElementById("row2").innerHTML="";
+    document.getElementById("row4").innerHTML="";
     document.getElementById('incorrect').innerHTML="Incorrect: " + 0;
     gameStart();
 }

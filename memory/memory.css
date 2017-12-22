@@ -3,13 +3,29 @@ body{
     background-image: url(https://img-www.tf-cdn.com/show/2/rick-and-morty.jpeg?_v=20150921140052&fit=crop&crop=faces%20top&w=1200&h=630);
     background-repeat: no-repeat;
     background-size: cover;
-    padding-bottom: 110px;
+    padding-bottom: 210px;
 
 }
 .card{
     width: 200px;
     height: 200px;
     padding: 10px;
+}
+.card2{
+    width: 170px;
+    height: 170px;
+    padding: 10px;
+}
+.card3{
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+}
+#selectLevel{
+    font-family: monospace;
+    font-size: 20px;
+    background-color: #68a21a;
+    color: white;
 }
 
 #header{
